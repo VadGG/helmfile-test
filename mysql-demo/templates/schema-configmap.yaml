@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: schema-configmap
+  labels: {{- include "mysql-demo.labels" . | nindent 4 }}
+
+data:
+  0-schema.sql: {{ tpl (.Files.Get "files/schema.sql") . | quote }}
+  1-data.sql: {{ tpl (.Files.Get "files/data.sql") . | quote }}

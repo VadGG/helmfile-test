@@ -1,0 +1,16 @@
+
+releases:
+  - name: test-db-mysql
+    namespace: test-db
+    chart: ./mysql-demo
+    version: "0.1.0"
+    wait: true 
+  - name: test-db-service
+    namespace: test-db
+    chart: ./service-demo
+    version: "0.1.0"
+    wait: true #it is same as --wait flag of helm, which means the operation will wait untill all the components are ready/healthy
+    needs:
+      - test-db/test-db-mysql
+
+
