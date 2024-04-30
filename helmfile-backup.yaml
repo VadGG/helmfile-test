@@ -1,16 +1,12 @@
-repositories:
-- name: helmfile-mysql-demo
-  url: https://github.com/VadGG/helmfile-test.git
-
 releases:
   - name: test-db-mysql
     namespace: test-db
-    chart: helmfile-mysql-demo/mysql-demo
+    chart: ./mysql-demo
     version: "0.1.0"
     wait: true 
   - name: test-db-service
     namespace: test-db
-    chart: helmfile-mysql-demo/service-demo
+    chart: ./service-demo
     version: "0.1.0"
     wait: true #it is same as --wait flag of helm, which means the operation will wait untill all the components are ready/healthy
     needs:
